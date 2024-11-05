@@ -7,7 +7,7 @@ import { skipToken } from "@reduxjs/toolkit/query";
 import { configureStore } from "@reduxjs/toolkit";
 
 const api = createApi({
-  reducerPath: "transactions-api",
+  reducerPath: "my-api",
   baseQuery: fetchBaseQuery({ baseUrl: "https://example.test" }),
   endpoints: (build) => ({
     helloWorld: build.query({
