@@ -71,7 +71,6 @@ it("with real timers - this passes", async () => {
 });
 
 it("with fake timers - this fails", async () => {
-  debugger;
   jest.useFakeTimers();
   const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
 
