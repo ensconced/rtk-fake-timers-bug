@@ -33,19 +33,14 @@ function useDebounce(value) {
 
 function Component() {
   const [searchString, setSearchString] = React.useState("");
-
-  const params = searchString || skipToken;
-  const debouncedParams = useDebounce(params);
-  const { data } = api.endpoints.helloWorld.useQuery(
-    params === skipToken ? params : debouncedParams
-  );
+  const debouncedParams = useDebounce(searchString || skipToken);
+  const { data } = api.endpoints.helloWorld.useQuery(debouncedParams);
 
   return (
     <>
       <input
         placeholder="search here"
         onChange={(e) => setSearchString(e.target.value)}
-        type="text"
       />
       <p>{data ? "Hello world" : null}</p>
     </>
