@@ -25,23 +25,11 @@ beforeEach(() => {
       getDefaultMiddleware().concat([api.middleware]),
   });
 
-  function useDebounce(value) {
-    const [debouncedValue, setDebouncedValue] = React.useState(value);
-    React.useEffect(() => {
-      const timer = setTimeout(() => {
-        setDebouncedValue(value);
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    }, [value]);
-
-    return debouncedValue;
-  }
-
   function Component() {
     const [searchString, setSearchString] = React.useState("");
-    const debouncedParams = useDebounce(searchString || skipToken);
-    const { data } = api.endpoints.helloWorld.useQuery(debouncedParams);
+    const { data } = api.endpoints.helloWorld.useQuery(
+      searchString || skipToken
+    );
 
     return (
       <>
